@@ -8,7 +8,13 @@ mongoose.connect(
 );
 
 app.get("/getUsers", (req, res) => {
-  UserModel.find({});
+  UserModel.find({}, (err, result) => {
+    if (err) {
+      res.json(err);
+    } else {
+      res.json(result);
+    }
+  });
 });
 
 app.post();
